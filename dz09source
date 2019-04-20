@@ -1,0 +1,69 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include "Extentional.hpp"
+#include "Date.hpp"
+
+using namespace std;
+using namespace ext;
+
+void cub()
+{
+	int i;
+	for (i = 1; i < 11; ++i)
+	{
+		cout << pow(i, 3) << " " ;
+	}
+	cout << endl;
+}
+int getV(int r, int h)
+{
+	int v = 3.14 * r * r * h;
+	return v;
+}
+int min(int a, int b)
+{
+	if (a < b)
+	{
+		return a;
+	}
+	else
+	{
+		return b;
+	}
+}
+int min4(int a,int b, int c,int d)
+{
+	return min(min(a, b), min(d, c));
+
+}
+int main()
+{
+	/*Задание 1-3*/
+	cub();
+	int r, h;
+	cin >> r;
+	cin >> h;
+	cout << getV(r, h) << endl;
+	int a, b, c, d;
+	cin >> a;
+	cin >> b;
+	cout << min(a, b) << endl;
+	cin >> c;
+	cin >> d;
+	cout << min4(a, b, c, d)<< endl;
+	/*Задание 4*/
+	Date fd = {2002, December , 1};
+	cin >> fd.day;
+	int temp;
+	cin >> temp;
+	fd.month = static_cast<Month>(temp);
+	cin >> fd.year;
+	Date sd = { 2002, December , 7 };
+	cin >> sd.day;
+	cin >> temp;
+	sd.month = static_cast<Month>(temp);
+	cin >> sd.year;
+	int ds = countDistance(fd, sd);
+	cout << ds << endl;
+}
