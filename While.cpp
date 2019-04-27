@@ -23,11 +23,11 @@ int main()
 	while (n != 0)
 	{
 		cin >> n;
-		if (min > n)
+		if (min > n && n != 0)
 		{
 			min = n;
 		}
-		if (n > max)
+		if (n > max && n != 0)
 		{
 			max = n;
 		}
