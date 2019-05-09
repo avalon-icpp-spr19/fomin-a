@@ -1,8 +1,10 @@
 #pragma once
 #include <string>
-
+#include <iostream>
+using namespace std;
 namespace ext
 {
+	
 	enum Month
 	{
 		January = 1,
@@ -128,34 +130,117 @@ namespace ext
 		{
 			cout << data.day << "." << data.month << "." << data.year;
 		}
+		cout << endl;
 	}
-
-	
 
 	/*
 	Возвращает сезон (зима, весна, лето, осень) передаваемой даты
 	*/
-	Season getSeason(Date date);
+	Season getSeason(Date date)
+	{
+		Season ans;
+		switch (date.month)
+		{
+		case 12:
+		case 1:
+		case 2: 
+			ans = Winter;
+			break;
+		case 3:
+		case 4:
+		case 5:
+			ans = Spring;
+			break;
+		case 6:
+		case 7:
+		case 8:
+			ans = Summer;
+			break;
+		case 9:
+		case 10:
+		case 11:
+			ans = Autumn;
+			break;
+		}
+		return ans;
+	}
+	void printSeason(Season sn)
+	{
+		switch (sn)
+		{
+		case ext::Winter:
+			cout << "Winter";
+			break;
+		case ext::Spring:
+			cout << "Spring";
+			break;
+		case ext::Summer:
+			cout << "Summer";
+			break;
+		case ext::Autumn:
+			cout << "Autumn";
+			break;
+		}
+		cout << endl;
+	}
 
 	/*
 	Меняет даты местами
 	*/
-	void swap(Date * lhs, Date * rhs);
+	void swap(Date * lhs, Date * rhs)
+	{
+		Date fd = *lhs;
+		*lhs = *rhs;
+		*rhs = fd;
+	}
 
 	/*
 	Сравнивает даты на эквивалентность
 	*/
-	bool isSame(Date* lhs, Date * rhs);
-
+	bool isSame(Date* lhs, Date * rhs)
+	{
+		bool asn = false;
+		Date fd = *lhs;
+		Date sd = *rhs;
+		if (fd.day == sd.day && fd.month == sd.month)
+		{
+			asn = true;
+		}
+		return asn;
+	}
 	/*
 	Возвращает указатель на большую дату
 	*/
-	Date * max(Date * lhs, Date * rsh);
+	Date * max(Date * lhs, Date * rsh)
+	{	
+		Date * ans;
+		if (countJND(*lhs) > countJND(*rsh))
+		{
+			ans = lhs;
+		}
+		else
+		{
+			ans = rsh;
+		}
+		return ans;
+	}
 
 	/*
 	Возвращает указатель на меньшую дату
 	*/
-	Date * min(Date * lhs, Date * rsh);
+	Date * min(Date * lhs, Date * rsh)
+	{
+		Date * ans;
+		if (countJND(*lhs) > countJND(*rsh))
+		{
+			ans = rsh;
+		}
+		else
+		{
+			ans = lhs;
+		}
+		return ans;
+	}
 
 	/*
 	Возвращает указатель на минимальную дату в переданном массиве дат
