@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include "Extentional.hpp"
+#include "Extention.hpp"
 #include "Date.hpp"
 
 using namespace std;
@@ -12,7 +12,7 @@ void cub()
 	int i;
 	for (i = 1; i < 11; ++i)
 	{
-		cout << pow(i, 3) << " " ;
+		cout << pow(i, 3) << " ";
 	}
 	cout << endl;
 }
@@ -32,7 +32,7 @@ int min(int a, int b)
 		return b;
 	}
 }
-int min4(int a,int b, int c,int d)
+int min4(int a, int b, int c, int d)
 {
 	return min(min(a, b), min(d, c));
 
@@ -51,9 +51,9 @@ int main()
 	cout << min(a, b) << endl;
 	cin >> c;
 	cin >> d;
-	cout << min4(a, b, c, d)<< endl;
+	cout << min4(a, b, c, d) << endl;
 	/*Задание 4*/
-	Date fd = {2002, December , 1};
+	Date fd = { 2002, June, 1 };
 	cin >> fd.day;
 	int temp;
 	cin >> temp;
@@ -66,4 +66,21 @@ int main()
 	cin >> sd.year;
 	int ds = countDistance(fd, sd);
 	cout << ds << endl;
+
+	Season seon = getSeason(fd);
+	printSeason(seon);
+
+	Date *yfd = &fd;
+	Date *ysd = &sd;
+	cout << isSame(yfd, ysd) << endl;
+
+	print(fd);
+	print(sd);
+	swap(yfd, ysd);
+	print(fd);
+	print(sd);
+
+	print(*max(yfd, ysd));
+
+	print(*min(yfd, ysd));
 }
