@@ -245,12 +245,34 @@ namespace ext
 	/*
 	Возвращает указатель на минимальную дату в переданном массиве дат
 	*/
-	Date * getMinDate(Date dates[], int size);
+	Date * getMinDate(Date dates[], int size)
+	{
+		Date *min= &dates[0];
+		for (int i = 1; i < size; ++i)
+		{
+			if (countJND(*min) > countJND(dates[i]))
+			{
+				min = &dates[i];
+			}
+		}
+		return min;
+	}
 
 	/*
 	Возвращает указатель на максимальную дату в переданном массиве дат
 	*/
-	Date * getMaxDate(Date dates[], int size);
+	Date * getMaxDate(Date dates[], int size) 
+	{
+		Date *max= &dates[0];
+		for (int j = 1; j < size; ++j)
+		{
+			if (countJND(*max) < countJND(dates[j]))
+			{
+				max = &dates[j];
+			}
+		}
+		return max;
+	}
 
 	/*
 	Проверяет может ли существовать дата с передаваемыми значениями.
@@ -259,4 +281,3 @@ namespace ext
 	возвращает false.
 	*/
 	bool tryFillDate(Date * date, int year, int month, int day);
-}
