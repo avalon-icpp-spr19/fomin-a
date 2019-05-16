@@ -5,6 +5,12 @@
 using namespace std;
 using namespace ext;
 
+struct Ind
+{
+	int s, e;
+};
+
+
 int main()
 {
 	/* Задание 1
@@ -369,4 +375,49 @@ int main()
 	Количество всех четных элементов.
 	Максимальный и минимальный элементы массива вместе с их индексами
 	*/
+	Ind imin, imax;
+	int les[10][10];
+	int sum = 0;
+	int kch=0;
+	int max, min;
+	max = 0;
+	min = 100;
+	imax.e = 0;
+	imax.s = 0;
+	imin.e = 0;
+	imin.s = 0;
+	for (int i = 0; i < 10; ++i)
+	{
+		for (int j = 0; j < 10; ++j)
+		{
+			les[i][j] = GetRandomValue(0, 100);
+			cout << les[i][j] << " ";
+			sum += les[i][j];
+		}
+		cout << endl;
+	}
+	for (int i = 0; i < 10; ++i)
+	{
+		for (int j = 0; j < 10; ++j)
+		{
+			if (les[i][j] % 2 == 0)
+			{
+				++kch;
+			}
+			if (min > les[i][j])
+			{
+				min = les[i][j];
+				imin.s = i;
+				imin.e = j;
+			}
+			if (les[i][j] > max)
+			{
+				max = les[i][j];
+				imax.s = i;
+				imax.e = j;
+			}
+		}
+	}
+	cout << max << " - les[" << imax.s << "][" << imax.e << "] " << endl;
+	cout << min << " - les[" << imin.s << "][" << imin.e << "] " << endl;
 }
