@@ -38,28 +38,33 @@ int main()
 	101					рубль
 	1255					рублей
 	*/
-	int k = 1255;
-	int n;
-
-	n = k % 10;
-	switch (n)
+	string s;
+	cin >> i;
+	if (i / 10 == 1)
 	{
-
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-		cout << k << " рубля" << endl;
-		break;
-	case 5:
-	case 6:
-	case 7:
-	case 8:
-	case 9:
-	case 0:
-		cout << k << " рублей" << endl;
-		break;
+		s = " рублей";
 	}
+	else
+	{
+		switch (i%10)
+		{
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			s= " рубля" ;
+			break;
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+		case 0:
+			s = " рублей";
+			break;
+		}
+	}
+	cout << i << s << endl;
 	/* Задание 3
 	В воскресенье Вася пошел в кружок робототехники и увидел там такой код управления боевым роботом:
 	// исходные данные, вводятся с клавиатуры.
@@ -99,15 +104,15 @@ int main()
 	cin >> isBoss;
 	int robotHealth;
 	cin >> robotHealth;
-	if (enemyInFront)
+	if (enemyInFront == 1)
 	{
-		if (isBoss && robotHealth > 50)
+		if (isBoss == 1 && robotHealth > 50)
 		{
 			cout << "Fire" << endl;
 		}
 		else
 		{
-			cout << "Fire" << endl;
+			cout << "-" << endl;
 		}
 	}
 	/* Задание 4
